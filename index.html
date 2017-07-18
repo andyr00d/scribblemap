@@ -1,4 +1,14 @@
+<html>
 <head>
+  <script>
+      window.scribblemaps = {
+          settings:
+              {
+                  "baseAPI": "google",
+                  "key": "AIzaSyDpHZ7QbB7AuBuy6kt-Ty6CU2-ccNib4zU"
+              }
+      }
+  </script>
 
     <script src="//scribblemaps.com/api/js/"></script>
 
@@ -6,70 +16,58 @@
 
 
     window.onload = function() {
-       var el = document.getElementById('ScribbleMap');
-       var sm = new ScribbleMap(el);
+       var sm = new ScribbleMap(document.getElementById('ScribbleMap'));
 
        //set up the style variable based on google maps
        var myStyle = [
-       {
-         featureType: "all",
-         elementType: "labels",
-         stylers: [
+         {
+           featureType: "administrative",
+           stylers: [
              { visibility: "off" }
-         ]
-       },
-       {
-         featureType: "administrative.country",
-         elementType: "geometry.stroke",
-         stylers: [
+           ]
+         },{
+           featureType: "poi",
+           stylers: [
              { visibility: "off" }
-         ]
-       }
+           ]
+         },{
+           featureType: "road",
+           stylers: [
+             { visibility: "off" }
+           ]
+         },
+         {
+           featureType: "landscape",
+           stylers: [
+             { visibility: "off" }
+           ]
+         }
        ];
 
-       //set all the display options
-       sm.view.setCenter([36.33444,  43.1409]);
-       sm.view.setZoom(10);
-       sm.ui.setAvailableTools([]);
-       sm.ui.styleControl(scribblemaps.ControlType.SEARCH,{"display":"none"});
-       sm.ui.styleControl(scribblemaps.ControlType.LINE_SETTINGS,{"display":"none"});
-       sm.ui.styleControl(scribblemaps.ControlType.LINE_COLOR,{"display":"none"});
-       sm.ui.styleControl(scribblemaps.ControlType.FILL_COLOR,{"display":"none"});
-       sm.ui.styleControl(scribblemaps.ControlType.ZOOM,{"display":"none"});
-       sm.ui.styleControl(scribblemaps.ControlType.MAP_TYPE,{"display":"none"});
-       sm.ui.styleControl(scribblemaps.ControlType.LEGEND,{"display":"none"});
+       var mapOptions = {
+         mapTypeId: google.maps.MapTypeId.TERRAIN,
+         styles: myStyle
+       };
 
-       sm.getBaseAPIMap().setMapTypeId(google.maps.MapTypeId.TERRAIN);
+       //sm.getBaseAPIMap().setMapTypeId(google.maps.MapTypeId.TERRAIN);
 
        //set the map properties by getting them from getbaseAPImap
-       //var mapOptions = {
-         //mapTypeId: google.maps.MapTypeId.TERRAIN,
-         //styles: myStyle
-       //};
-       //sm.getBaseAPIMap().setOptions(mapOptions);
+       sm.getBaseAPIMap().setOptions(mapOptions);
 
-       //Prints all draw functions
-       console.log(sm.draw);
-       document.getElementById('footer').style.height = 0;
-
-       /* Set the Andy Roo base Polygon.*/
-       sm.draw.label([36.33444,  43.1409], "AndyRoo Kingdom");
-
-       sm.draw.poly([
-                   [36.41444, 43.11009],
-                   [36.33179, 43.06649],
-                   [36.28420, 43.15953],
-                   [36.29583, 43.22064],
-                   [36.36608, 43.24262],
-                   [36.40477, 43.18974],
-       ], {
-           "fillOpacity": 0.5,
-           "fillColor": "#00FF00",
-           "lineColor": "#000000"
-       });
+       //set all the display options
+sm.view.setCenter([36.33444,  43.1409]);
+sm.view.setZoom(6);
+sm.ui.setAvailableTools([]);
+sm.ui.styleControl(scribblemaps.ControlType.SEARCH,{"display":"none"});
+sm.ui.styleControl(scribblemaps.ControlType.LINE_SETTINGS,{"display":"none"});
+sm.ui.styleControl(scribblemaps.ControlType.LINE_COLOR,{"display":"none"});
+sm.ui.styleControl(scribblemaps.ControlType.FILL_COLOR,{"display":"none"});
+sm.ui.styleControl(scribblemaps.ControlType.TOOLBOX,{"display":"none"});
+sm.ui.styleControl(scribblemaps.ControlType.ZOOM,{"display":"none"});
+sm.ui.styleControl(scribblemaps.ControlType.MAP_TYPE,{"display":"none"});
 
      }
-
+//github shouldn't overwrite this
     </script>
 
     <style>
@@ -80,3 +78,4 @@
 <body>
     <div id="ScribbleMap" style="width: 500px; height: 500px"></div>
 </body>
+</html>
