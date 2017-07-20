@@ -20,29 +20,77 @@
 
        //set up the style variable based on google maps
        var myStyle = [
+
          {
+             "elementType": "geometry",
+             "stylers": [
+               {
+                 "color": "#ebe3cd"
+               }
+             ]
+           },
+           {
+             "elementType": "labels.text.fill",
+             "stylers": [
+               {
+                 "color": "#523735"
+               }
+             ]
+           },
+           {
+             "elementType": "labels",
+             "stylers": [
+               {
+                 visibility: "off"
+               }
+             ]
+           },
+           {
+             "featureType": "water",
+             "elementType": "geometry.fill",
+             "stylers": [
+               {
+                 "color": "#b9d3c2"
+               }
+             ]
+           },
+           {
+             "featureType": "water",
+             "elementType": "labels.text.fill",
+             "stylers": [
+               {
+                 "color": "#92998d"
+               }
+             ]
+           },
+           {
            featureType: "administrative",
            stylers: [
              { visibility: "off" }
            ]
-         },{
-           featureType: "poi",
-           stylers: [
-             { visibility: "off" }
-           ]
-         },{
-           featureType: "road",
-           stylers: [
-             { visibility: "off" }
-           ]
          },
-         {
-           featureType: "landscape",
-           stylers: [
-             { visibility: "off" }
-           ]
-         }
-       ];
+      {
+ featureType: "poi",
+ stylers: [
+   { visibility: "off" }
+ ]
+},
+{
+ featureType: "road",
+ stylers: [
+   { visibility: "off" }
+ ]
+},
+{
+  "featureType": "landscape.natural",
+  "elementType": "geometry",
+  "stylers": [
+    {
+      "color": "#dfd2ae"
+    }
+  ]
+},
+  ];
 
        var mapOptions = {
          mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -66,8 +114,30 @@ sm.ui.styleControl(scribblemaps.ControlType.TOOLBOX,{"display":"none"});
 sm.ui.styleControl(scribblemaps.ControlType.ZOOM,{"display":"none"});
 sm.ui.styleControl(scribblemaps.ControlType.MAP_TYPE,{"display":"none"});
 
+      /* Set the Andy Roo base Polygon.*/
+      sm.draw.label([31.493091, 21.643066], "Kingdom of Fahaz");
+
+      sm.draw.poly([
+        [31.930894, 19.929199],
+        [32.756964, 21.038818],
+        [32.775440, 21.412354],
+        [32.942852, 21.703491],
+        [32.642700, 23.071289],
+        [32.443581, 23.156433],
+        [32.341536, 23.079529],
+        [32.174305, 23.425598],
+        [30.237417, 24.450073],
+        [30.332287, 19.462280],
+        [30.701401, 19.923706],
+        [31.116149, 20.165405],
+        [31.781590, 19.901733],
+      ], {
+          "fillOpacity": 0.5,
+          "fillColor": "#3399ff",
+          "lineColor": "#000000"
+      });
      }
-//github shouldn't overwrite this
+
     </script>
 
     <style>
